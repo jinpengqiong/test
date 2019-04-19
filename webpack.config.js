@@ -5,12 +5,14 @@ module.exports  = {
     entry :path.join(__dirname, './src/main.js'),
     output : {
         path: path.join(__dirname, './dist'),
-        filename:'bundle.js'
+        filename:'bundle.js',
+        // publicPath: '/src/'
+
     },
     devServer: {
         open : true,
         port : 3000,
-        // contentBase : 'src',
+        contentBase : 'src',
         hot : true
     },
     module:{
@@ -23,7 +25,7 @@ module.exports  = {
                   plugins: [require('@babel/plugin-proposal-class-properties')]
                 }  
             }, exclude : /node_modules/ },
-            { test : /\.(jpg|png|gif|bmp|jepg)$/, use : 'url-loader?limit=10000&name=[hash:8]-[name].[ext]' },
+            { test : /\.(jpg|png|gif|bmp|jepg)$/, use : 'url-loader' },
             { test : /\.(ttf|eot|svg|woff|woff2)$/, use : 'url-loader'}
         ]
     },
