@@ -2,12 +2,11 @@ const path = require('path')
 const htmlWebpackHtml = require('html-webpack-plugin')
 
 module.exports  = {
+    mode:'development',
     entry :path.join(__dirname, './src/main.js'),
     output : {
         path: path.join(__dirname, './dist'),
-        filename:'bundle.js',
-        // publicPath: '/src/'
-
+        filename:'bundle.js'
     },
     devServer: {
         open : true,
