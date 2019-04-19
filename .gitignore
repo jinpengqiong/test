@@ -1,0 +1,4 @@
+# ignore these file when searching
+
+node_modules
+dist
