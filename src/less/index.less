@@ -155,6 +155,21 @@ Header {
                 background-color: #FF9A2A;
                 .pic {
                     color:  lighten( #FF9A2A, 6%);
+                    @keyframes icon-cog {
+                        0% {
+                            -webkit-transform: rotate(0deg);
+                            transform: rotate(0deg);
+                        }
+
+                        100% {
+                            -webkit-transform: rotate(359deg);
+                            transform: rotate(359deg);
+                        }
+                    }
+
+                    .icon-cog {
+                        animation: icon-cog 2s linear infinite;
+                    }
                 }
             }
             .idle{
