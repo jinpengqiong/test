@@ -117,8 +117,7 @@ Header {
             }
         } 
         .history {
-            position: absolute;
-            bottom: 80px;
+            margin-bottom: 50px;
             span{
                 font-size: 24px;
                 color: #ccc; 
@@ -151,6 +150,7 @@ Header {
             height:180px;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             .building{
                 background-color: #FF9A2A;
                 .pic {
@@ -164,7 +164,6 @@ Header {
                 }
             }
             .building, .idle {
-                width:33%;
                 height:150px;
                 display:flex;
                 justify-content: space-around;
@@ -185,10 +184,11 @@ Header {
                     font-size: 48px;
                     margin-left: 5px;
                     margin-top: 90px;
+                    margin-right:10px;
+                    color: #fff;
                 }
             }
             .stat {
-                width:31%;
                 height:150px;
                 background-color: #fff;
                 display: flex;
@@ -377,91 +377,7 @@ Header {
     }
 }
 
-.modal {
-    display:none;
-    position: absolute;
-    top:408px;
-    left:448px;
-    width:570px;
-    height:150px;
-    box-shadow: darkgrey 0px 3px 5px;
-    border: 1px solid #00b4cf;
-    background-color: #fff;
-    .text {
-        padding-top: 30px;
-        padding-left: 10px;
-    }
-    .input {
-        padding-top: 8px;
-        padding-left: 10px;
-        input {
-            width:550px;
-            height:30px;
-        } 
-    }
-    .modalButtoms{
-        margin-top:10px;
-        margin-left:10px;
-        .add {
-            width:150px;
-            height: 30px;
-            font-size: 14px;
-            background-color: #00b4cf;
-            margin-right:20px;
-            span {
-                color:white;
-            }
-        }
-        .cancel {
-            width:150px;
-            height: 30px;
-            font-size: 14px;
-            background-color: #435466;
-            margin-right:20px;
-            span {
-                color:white;
-            }
-        }
-    }
-    .top{
-        width:20px;
-        height:20px;
-        position:absolute;
-        left:12px;
-        top:-20px;
-        z-index: 1000;/*兼容ie8-*/
-    }
-    .top-arrow1,.top-arrow2{
-        width:0;
-        height:0;
-        display:block;
-        position:absolute;
-        left:0;
-        top:0;
-        z-index: 5;/*兼容ie8-*/
-        border-top:10px transparent dashed;
-        border-left:10px transparent dashed;
-        border-right:10px transparent dashed;
-        border-bottom:10px white solid;
-        overflow:hidden;
-    }
-    .top-arrow1{
-        border-bottom:10px #00b4cf solid;
-    }
-    .top-arrow2{
-        top:1px;/*重要*/
-        border-bottom:10px white solid;
-    }
-    .close {
-        float:right;
-        margin-right:15px;
-        margin-top:8px;
-        .icon-close {
-            font-size: 25px;
-            color: #00b4cf ;
-        }
-    }
-}
+
 
 
 /*device-width:>=1200px*/
@@ -471,10 +387,11 @@ Header {
         margin: 0 auto;
         display: flex;
         .side {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             width: 16vw;
-            height: 97vh;
             background-color: @asideColor;
-            float: left;
             ul{
                 li {
                     .dashboard {
@@ -488,9 +405,13 @@ Header {
 
         .main {
             flex:1;
-            height: calc(100vh - 3vh);
+            height: 100%;
             margin-left: 10px;
-            float: left;
+            .building,
+            .idle,
+            .stat {
+                width:32%;
+            }
         }
     }
 }
@@ -500,17 +421,21 @@ Header {
     .parent {
         display: flex;
         .side {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             width: 16vw;
-            height: calc(100vh - 3vh);
             background-color: #2d4054;
-            float: left;
         }
 
         .main {
             flex:1;
-            height: calc(100vh - 3vh);
             margin-left: 10px;
-            float: left;
+            .building,
+            .idle,
+            .stat {
+                width: 32%;
+            }
         }
     }
 }
@@ -528,8 +453,12 @@ Header {
             flex:1;
             height: calc(100vh - 3vh);
             margin-left: 10px;
-            float: left;
             margin-right: 10px;
+            .building,
+            .idle,
+            .stat {
+                width: 32%;
+            }
         }
     }
 }
@@ -549,9 +478,120 @@ Header {
         flex: 1;
         background-color: @mainColor;
         height: calc(100vh - 3vh);
-        float: left;
         margin-left: 10px;
         margin-right: 10px;
+        .building,
+        .idle
+         { width: 46%; }
+        .stat {
+            width: 100%;
+            margin-top:10px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    top: 408px;
+    left: 448px;
+    width: 570px;
+    height: 150px;
+    box-shadow: darkgrey 0px 3px 5px;
+    border: 1px solid #00b4cf;
+    background-color: #fff;
+
+    .text {
+        padding-top: 30px;
+        padding-left: 10px;
+    }
+
+    .input {
+        padding-top: 8px;
+        padding-left: 10px;
+
+        input {
+            width: 550px;
+            height: 30px;
+        }
+    }
+
+    .modalButtoms {
+        margin-top: 10px;
+        margin-left: 10px;
+
+        .add {
+            width: 150px;
+            height: 30px;
+            font-size: 14px;
+            background-color: #00b4cf;
+            margin-right: 20px;
+
+            span {
+                color: white;
+            }
+        }
+
+        .cancel {
+            width: 150px;
+            height: 30px;
+            font-size: 14px;
+            background-color: #435466;
+            margin-right: 20px;
+
+            span {
+                color: white;
+            }
+        }
+    }
+
+    .top {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 12px;
+        top: -20px;
+        z-index: 1000;
+        /*兼容ie8-*/
+    }
+
+    .top-arrow1,
+    .top-arrow2 {
+        width: 0;
+        height: 0;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 5;
+        /*兼容ie8-*/
+        border-top: 10px transparent dashed;
+        border-left: 10px transparent dashed;
+        border-right: 10px transparent dashed;
+        border-bottom: 10px white solid;
+        overflow: hidden;
+    }
+
+    .top-arrow1 {
+        border-bottom: 10px #00b4cf solid;
+    }
+
+    .top-arrow2 {
+        top: 1px;
+        /*重要*/
+        border-bottom: 10px white solid;
+    }
+
+    .close {
+        float: right;
+        margin-right: 15px;
+        margin-top: 8px;
+
+        .icon-close {
+            font-size: 25px;
+            color: #00b4cf;
+        }
     }
 }
 
