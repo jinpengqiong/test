@@ -1,6 +1,6 @@
 const path = require('path')
 const htmlWebpackHtml = require('html-webpack-plugin')
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports  = {
     mode:'development',
     entry :path.join(__dirname, './src/main.js'),
@@ -17,6 +17,10 @@ module.exports  = {
     module:{
         rules : [
             { test : /\.less$/, use : [ 'style-loader', 'css-loader', 'less-loader' ] },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
             { test : /\.js$/, use : {
                 loader: 'babel-loader',
                 options: {
