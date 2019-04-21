@@ -1,5 +1,6 @@
 import './less/index.less'
 import './less/global.less'
+import './font icons/fonts.css'
 
 
 //function 1 remove node
