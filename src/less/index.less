@@ -28,7 +28,12 @@ Header {
             border-right: 1px solid;  
             width: 15px;
             height: 15px;  
-            transform: rotate(491deg); 
+            transform: rotate(491deg);
+            &:hover{
+                .settings {
+                    display:block;
+                }
+            } 
         }
         .icon-navicon {
             display:none;
@@ -38,8 +43,6 @@ Header {
             font-size: 20px;
             color: @asideColor;
         }
-    
-        
         @media screen and (min-width: 1200px) {
             img {
                 margin-right: 15px;
@@ -80,6 +83,28 @@ Header {
                 margin-right: 8px;
             }
         }
+    }
+    .settings {
+        display:none;
+        float: right;
+        width: 120px;
+        height: 100px;
+        padding:0;
+        background-color: #fff;
+        .icon-sign-in,
+        .icon-id-card {
+            font-size: 14px;
+            color: #2d4054;
+        }
+        div{            
+            height:50px;
+            line-height:50px;
+        }
+        .signout{
+            background-color: #efefef;
+        }
+        
+        
     }
 }
 
@@ -155,6 +180,7 @@ Header {
                 background-color: #FF9A2A;
                 .pic {
                     color:  lighten( #FF9A2A, 6%);
+                    padding-top:5px;
                     @keyframes icon-cog {
                         0% {
                             -webkit-transform: rotate(0deg);
@@ -168,7 +194,7 @@ Header {
                     }
 
                     .icon-cog {
-                        animation: icon-cog 2s linear infinite;
+                        animation: icon-cog 5s linear infinite;
                     }
                 }
             }
@@ -509,8 +535,8 @@ Header {
 .modal {
     display: none;
     position: absolute;
-    top: 408px;
-    left: 448px;
+    top: 0;
+    left:0;
     width: 570px;
     height: 150px;
     box-shadow: darkgrey 0px 3px 5px;
@@ -529,6 +555,7 @@ Header {
         input {
             width: 550px;
             height: 30px;
+            color:#00b4cf;
         }
     }
 
