@@ -19,12 +19,7 @@ removeNode();
 
 
 //function 2 add node
-let add = document.querySelectorAll(".icon-plus")
-let modal = document.querySelector(".modal")
 let input = document.querySelector("input")
-let addButton = document.querySelector(".add")
-let cancelButton = document.querySelector(".cancel")
-let closeButton = document.querySelector(".close")
 let curNode = null; //save the node position to be added
 
 input.oninput = function () {
@@ -33,6 +28,8 @@ input.oninput = function () {
 }  
 
 // open modal
+let add = document.querySelectorAll(".icon-plus")
+let modal = document.querySelector(".modal")
 for (let i = 0; i < add.length; i++) {
     add[i].addEventListener('click', function (e) {
         curNode = e;
@@ -59,6 +56,7 @@ function createDocumentFragment(txt) {
 }
 
 //comfirm input and submit
+let addButton = document.querySelector(".add")
 addButton.addEventListener('click', function(e){
     if (!localStorage.getItem('myInput')) return;
     let inputValue = localStorage.getItem('myInput')
@@ -78,6 +76,8 @@ addButton.addEventListener('click', function(e){
 })
 
 //cancel submit
+let cancelButton = document.querySelector(".cancel")
+let closeButton = document.querySelector(".close")
 cancelButton.addEventListener('click', function (e) {
     curNode = null;
     input.value = '';
@@ -87,6 +87,17 @@ closeButton.addEventListener('click', function (e) {
     curNode = null;
     input.value = '';
     modal.style.setProperty('display', 'none')
+})
+
+//click navbar
+let navicon = document.querySelector(".icon-navicon")
+let close = document.querySelector(".close1")
+let side = document.querySelector(".side")
+navicon.addEventListener('click', function (e) {
+    side.style.setProperty('display', 'block')
+})
+close.addEventListener('click', function (e) {
+    side.style.setProperty('display', 'none')
 })
 
 

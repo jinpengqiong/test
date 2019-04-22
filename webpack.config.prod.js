@@ -1,6 +1,6 @@
 const path = require('path')
 const htmlWebpackHtml = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'production',
@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, './dist'),
         filename: 'bundle.js',
-        // publicPath:'/'
+        // publicPath:'../../'
     },
     module: {
         rules: [
@@ -18,7 +18,15 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                  {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                      publicPath: '../../',
+                    },
+                  },
+                  'css-loader',
+                ],
             },
             {
                 test: /\.js$/,
@@ -46,6 +54,10 @@ module.exports = {
             title: "CRUISE",
             template: path.join(__dirname, './src/index.template.html'),
             filename: 'index.html'
-        })
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+          }),
     ]
 }

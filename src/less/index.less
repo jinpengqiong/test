@@ -1,5 +1,11 @@
-@asideColor : #2d4054;
+//colors
+@asideColor1 : #2d4054;
+@asideColor2 : #435466;
 @mainColor  : transparent;
+@yellow     : #FF9A2A;
+@green      : #7FBC39;
+@lightBlue  : #00b4cf;
+@darkBlue   : #01869a;
 
 Header {
     height: 70px;
@@ -11,7 +17,49 @@ Header {
     nav {
         svg {
             height: 40px;
-            margin-top:13px;
+            margin:13px;
+        }
+        .arrow1 {
+            float: right;
+            position: relative;
+            .top {
+                float: right;
+                margin-top:20px;
+                margin-left:20px;
+                border-top: 1px solid;
+                border-right: 1px solid;  
+                width: 15px;
+                height: 15px;  
+                transform: rotate(491deg);
+            }
+            .settings {
+                display:none;
+                // float: right;
+                position: absolute;
+                right:-10px;
+                top: 80px;
+                width: 120px;
+                height: 100px;
+                padding:0;
+                background-color: #fff;
+                .icon-sign-in,
+                .icon-id-card {
+                    font-size: 14px;
+                    color: @asideColor1;
+                }
+                div{            
+                    height:50px;
+                    line-height:50px;
+                }
+                .signout{
+                    background-color: #efefef;
+                }
+            }
+            &:hover {
+                .settings {
+                    display:block;
+                }
+            }
         }
 
         
@@ -21,38 +69,25 @@ Header {
             border-radius: 50%;
             margin-top:13px;
         }
-        .top {
-            float: right;
-            margin-top:20px;
-            border-top: 1px solid;
-            border-right: 1px solid;  
-            width: 15px;
-            height: 15px;  
-            transform: rotate(491deg);
-            &:hover{
-                .settings {
-                    display:block;
-                }
-            } 
-        }
+        
         .icon-navicon {
             display:none;
             float: left;
             margin-top:25px;
             margin-left:15px;
             font-size: 20px;
-            color: @asideColor;
+            color: @asideColor1;
         }
         @media screen and (min-width: 1200px) {
-            img {
-                margin-right: 15px;
+            .arrow1 {
+                margin-right:10%;
             }
             .top {
                 margin-right: 12%;
             }
         }
         @media screen and (min-width: 1024px) and (max-width: 1200px) {
-            .top {
+            .arrow1 {
                 margin-right: 20px;
             }
             img {
@@ -64,7 +99,7 @@ Header {
             .icon-navicon {
                 display: block;
             }
-            .top {
+            .arrow1 {
                 margin-right: 20px;
             }
             img {
@@ -76,40 +111,33 @@ Header {
             .icon-navicon {
                 display: block;
             }
-            .top {
+            .arrow1 {
                 margin-right: 20px;
             }
             img {
                 margin-right: 8px;
             }
+            svg {
+                height: 40px;
+                margin:5px;
+            }
         }
     }
-    .settings {
-        display:none;
-        float: right;
-        width: 120px;
-        height: 100px;
-        padding:0;
-        background-color: #fff;
-        .icon-sign-in,
-        .icon-id-card {
-            font-size: 14px;
-            color: #2d4054;
-        }
-        div{            
-            height:50px;
-            line-height:50px;
-        }
-        .signout{
-            background-color: #efefef;
-        }
-        
-        
-    }
+ 
 }
 
 .parent {
     .side {
+        .close1 {
+            float: right;
+            margin-right: 15px;
+            margin-top: 8px;
+    
+            .icon-close {
+                font-size: 25px;
+                color: @lightBlue;
+            }
+        }
         .ul1 {
             margin-top: 40px;
             list-style-type:none;
@@ -128,16 +156,16 @@ Header {
                 }
             }
             li.selected {
-                background-color:#435466;
+                background-color: @asideColor2;
                 .sitemap {
                     padding-left: 15%;
                     width:20px;
                     font-size: 20px;
-                    color: #00B4CF; 
+                    color: @lightBlue; 
                 }
                 .text {
                     padding-left: 20px;
-                    color: #00B4CF;
+                    color: @lightBlue;
                 }
             }
         } 
@@ -162,7 +190,7 @@ Header {
                         padding-left:5px;
                     }
                     &:hover {
-                        color: #00B4CF
+                        color: @lightBlue;
                     }
                 }
             }
@@ -177,9 +205,9 @@ Header {
             align-items: center;
             flex-wrap: wrap;
             .building{
-                background-color: #FF9A2A;
+                background-color: @yellow;
                 .pic {
-                    color:  lighten( #FF9A2A, 6%);
+                    color:  lighten( @yellow, 6%);
                     padding-top:5px;
                     @keyframes icon-cog {
                         0% {
@@ -199,9 +227,9 @@ Header {
                 }
             }
             .idle{
-                background-color: #7FBC39;
+                background-color: @green;
                 .pic {
-                    color:  lighten( #7FBC39, 6%);
+                    color:  lighten( @green, 6%);
                 }
             }
             .building, .idle {
@@ -235,7 +263,7 @@ Header {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
-                .col1, .col2, .col3 {
+                .cola, .colb, .colc {
                     p {
                        font-size: 12px; 
                     }
@@ -261,7 +289,7 @@ Header {
                 text-align:center;
             }
             div.selected {
-                border-bottom: 3px solid #00b4cf;
+                border-bottom: 3px solid @lightBlue;
             }
             .search {
                 margin-top:10px;
@@ -287,7 +315,7 @@ Header {
                     padding: 10px;
                 }
                 .icon-th-list {
-                    color: #00b4cf
+                    color: @lightBlue;
                 }
             }
         }
@@ -335,7 +363,7 @@ Header {
                                 display: inline-block;
                                 width:60px;
                                 height:20px;
-                                background-color: #7FBC39;
+                                background-color: @green;
                                 color: white;
                                 line-height: 20px;
                                 text-align: center;
@@ -344,7 +372,7 @@ Header {
                                 display: inline-block;
                                 width:60px;
                                 height:20px;
-                                background-color:  #FF9A2A;
+                                background-color:  @yellow;
                                 color: white;
                                 line-height: 20px;
                                 text-align: center;
@@ -372,7 +400,7 @@ Header {
                                 float: left;
                                 width:25px;
                                 height:25px;
-                                background-color: #00b4cf;
+                                background-color: @lightBlue;
                                 line-height: 30px;
                                 text-align: center;
                                 .icon-plus{
@@ -390,7 +418,7 @@ Header {
                                 margin-left:20px;
                                 .icon-trash{
                                     font-size: 14px;
-                                    color: darken(#435466, 30%) ;  
+                                    color: darken(@asideColor1, 30%) ;  
                                 }
                             }
                         }
@@ -400,7 +428,7 @@ Header {
                                 width:90px;
                                 height: 30px;
                                 font-size: 14px;
-                                background-color: #00b4cf;
+                                background-color: @lightBlue;
                                 margin-right:20px;
                                 .icon-folder {
                                     font-size: 14px;
@@ -431,8 +459,11 @@ Header {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 16vw;
-            background-color: @asideColor;
+            width: 225px;
+            background-color: @asideColor1;
+            .close1 {
+                display:none;
+            }
             ul{
                 li {
                     .dashboard {
@@ -465,8 +496,11 @@ Header {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 16vw;
-            background-color: #2d4054;
+            width: 18%;
+            background-color: @asideColor1;
+            .close1 {
+                display:none;
+            }
         }
 
         .main {
@@ -484,14 +518,26 @@ Header {
 /*device-width:768px-1024px*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .parent {
-        display: flex;
-
+        // display: flex;
         .side {
             display:none;
+            position: absolute;
+            top:0px;
+            background-color: @asideColor1;
+            z-index: 1000;
+            height: 100%;
+            width: 25%;
+            .close1 {
+                display:block;
+            }
+            .history{
+                position: absolute;
+                bottom: 0;  
+            }
         }
-
         .main {
             flex:1;
+            width:100%;
             height: calc(100vh - 3vh);
             margin-left: 10px;
             margin-right: 10px;
@@ -499,6 +545,12 @@ Header {
             .idle,
             .stat {
                 width: 32%;
+            }
+            .col1 {
+                display: none;
+            }
+            .col2{
+                margin-left:10px;
             }
         }
     }
@@ -513,21 +565,28 @@ Header {
 
     .side {
         display:none;
+        width: 18%;
     }
 
     .main {
-        flex: 1;
+        flex:1;
         background-color: @mainColor;
         height: calc(100vh - 3vh);
         margin-left: 10px;
         margin-right: 10px;
         .building,
         .idle
-         { width: 46%; }
+         { width: 48%; }
         .stat {
             width: 100%;
-            margin-top:10px;
             margin-bottom: 10px;
+            margin-top:100px;
+        }
+        .col1 {
+            display:none
+        }
+        .col2{
+            margin-left:10px;
         }
     }
 }
@@ -540,7 +599,7 @@ Header {
     width: 570px;
     height: 150px;
     box-shadow: darkgrey 0px 3px 5px;
-    border: 1px solid #00b4cf;
+    border: 1px solid @lightBlue;
     background-color: #fff;
 
     .text {
@@ -555,7 +614,7 @@ Header {
         input {
             width: 550px;
             height: 30px;
-            color:#00b4cf;
+            color: @lightBlue;
         }
     }
 
@@ -567,7 +626,7 @@ Header {
             width: 150px;
             height: 30px;
             font-size: 14px;
-            background-color: #00b4cf;
+            background-color: @lightBlue;
             margin-right: 20px;
 
             span {
@@ -579,7 +638,7 @@ Header {
             width: 150px;
             height: 30px;
             font-size: 14px;
-            background-color: #435466;
+            background-color: @asideColor1;
             margin-right: 20px;
 
             span {
@@ -616,7 +675,7 @@ Header {
     }
 
     .top-arrow1 {
-        border-bottom: 10px #00b4cf solid;
+        border-bottom: 10px @lightBlue solid;
     }
 
     .top-arrow2 {
@@ -632,7 +691,7 @@ Header {
 
         .icon-close {
             font-size: 25px;
-            color: #00b4cf;
+            color: @lightBlue;
         }
     }
 }
